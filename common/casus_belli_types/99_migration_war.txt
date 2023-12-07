@@ -10,6 +10,9 @@
 			culture = { has_cultural_pillar = heritage_turkic }
 			culture = { has_cultural_pillar = heritage_mongolic }
 		}
+		culture = {
+			NOT = { has_cultural_era_or_later = culture_era_early_medieval }
+		}
 		# 組織されていない宗教
 		faith = { has_doctrine_parameter = unreformed }
 		has_government = tribal_government
