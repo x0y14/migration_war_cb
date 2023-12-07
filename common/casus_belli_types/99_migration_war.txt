@@ -14,7 +14,10 @@
 			NOT = { has_cultural_era_or_later = culture_era_early_medieval }
 		}
 		# 組織されていない宗教
-		faith = { has_doctrine_parameter = unreformed }
+		OR = {
+			faith = { has_doctrine_parameter = unreformed }
+			faith = { religion = religion:islam_religion }
+		}
 		has_government = tribal_government
 	}
 
@@ -611,39 +614,39 @@
 				scope:attacker = { add_courtier = scope:landless_family }
 			}
 
-			## If scope:attacker wasn't the house head, they found a new house. We ignore their probable-tribalism.
-			if = {
-				limit = {
-					NOT = { this = house.house_head }
-				}
-				found_cadet_house_decision_effect = {
-					CHARACTER = this
-					PRESTIGE = 0
-				}
-			}
-			## If scope:attacker *was* the house head, then all landed members of their house not in their new realm found new houses.
-			else = {
-				house = {
-					ordered_house_member = {
-						limit = {
-							is_ruler = yes
-							NOR = {
-								# Exempt scope:attacker.
-								this = scope:attacker
-								# And anyone who made the trip with them.
-								any_liege_or_above = { this = scope:attacker }
-							}
-						}
-						order_by = age
-						max = 100	# Basically, all of them.
-						check_range_bounds = no
-						found_cadet_house_decision_effect = {
-							CHARACTER = this
-							PRESTIGE = 0
-						}
-					}
-				}
-			}
+			# ## If scope:attacker wasn't the house head, they found a new house. We ignore their probable-tribalism.
+			# if = {
+			# 	limit = {
+			# 		NOT = { this = house.house_head }
+			# 	}
+			# 	found_cadet_house_decision_effect = {
+			# 		CHARACTER = this
+			# 		PRESTIGE = 0
+			# 	}
+			# }
+			# ## If scope:attacker *was* the house head, then all landed members of their house not in their new realm found new houses.
+			# else = {
+			# 	house = {
+			# 		ordered_house_member = {
+			# 			limit = {
+			# 				is_ruler = yes
+			# 				NOR = {
+			# 					# Exempt scope:attacker.
+			# 					this = scope:attacker
+			# 					# And anyone who made the trip with them.
+			# 					any_liege_or_above = { this = scope:attacker }
+			# 				}
+			# 			}
+			# 			order_by = age
+			# 			max = 100	# Basically, all of them.
+			# 			check_range_bounds = no
+			# 			found_cadet_house_decision_effect = {
+			# 				CHARACTER = this
+			# 				PRESTIGE = 0
+			# 			}
+			# 		}
+			# 	}
+			# }
 
 			## Increment their Varangian Adventurer CB tally.
 			if = {
