@@ -286,7 +286,10 @@
 					scope:new_title = {
 						set_destroy_on_gain_same_tier = yes
 						set_no_automatic_claims = yes
+						set_delete_on_destroy = yes
+						set_destroy_if_invalid_heir = yes
 						set_can_be_named_after_dynasty = no
+						set_color_from_title = scope:target_duchy
 						change_title_holder = {
 							holder = scope:attacker
 							change = scope:change
